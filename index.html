@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>右昌 Apple Shop — 工具總覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+:root {
+  --blue:   #2563eb;
+  --green:  #059669;
+  --rose:   #e11d48;
+  --amber:  #d97706;
+  --purple: #7c3aed;
+  --shadow: 0 2px 16px rgba(15,23,42,.07), 0 1px 4px rgba(15,23,42,.04);
+  --shadow-hover: 0 24px 64px rgba(15,23,42,.13), 0 6px 20px rgba(15,23,42,.07);
+  --radius: 22px;
+}
+
+body {
+  background:#eff3fd;
+  background-image:
+    radial-gradient(circle at 10% 0%,   rgba(37,99,235,.10) 0%, transparent 50%),
+    radial-gradient(circle at 90% 100%, rgba(124,58,237,.10) 0%, transparent 50%),
+    radial-gradient(#c7d2fe 1.2px, transparent 1.2px);
+  background-size:100% 100%, 100% 100%, 24px 24px;
+  font-family:'Noto Sans TC',-apple-system,"PingFang TC",sans-serif;
+  min-height:100vh;
+  color:#0f172a;
+}
+
+/* ── 頂部導覽列 ── */
+.topbar {
+  position:sticky; top:0; z-index:100;
+  background:rgba(10,15,32,.90);
+  backdrop-filter:blur(28px) saturate(1.8);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  height:56px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 40px;
+}
+.t-brand { display:flex; align-items:center; gap:12px; }
+.t-logo {
+  width:30px; height:30px; border-radius:8px;
+  background:linear-gradient(135deg,#2563eb 0%,#7c3aed 100%);
+  display:flex; align-items:center; justify-content:center;
+  font-size:15px; flex-shrink:0;
+  box-shadow:0 2px 8px rgba(37,99,235,.4);
+}
+.t-name { font-size:14px; font-weight:800; letter-spacing:-.01em; color:#f1f5f9; }
+.t-sub  { font-size:10px; color:rgba(255,255,255,.35); margin-top:1px; }
+.t-badge {
+  font-size:11px; font-weight:600; color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.12);
+  padding:5px 14px; border-radius:999px; letter-spacing:.04em;
+}
+
+/* ── 主容器 ── */
+.shell { max-width:1100px; margin:0 auto; padding:56px 32px 80px; }
+
+/* ── Hero ── */
+.hero { margin-bottom:48px; }
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--blue); margin-bottom:16px;
+}
+.hero-eyebrow::before {
+  content:''; display:block;
+  width:20px; height:2.5px; border-radius:2px; background:var(--blue);
+}
+.hero-title {
+  font-size:68px; font-weight:900; letter-spacing:-.05em; line-height:.88;
+  color:#0f172a;
+}
+.hero-title em {
+  font-style:normal;
+  background:linear-gradient(120deg, var(--blue) 0%, var(--purple) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.hero-sub {
+  margin-top:18px; font-size:15px; color:#64748b;
+  font-weight:400; line-height:1.55; letter-spacing:.01em;
+}
+
+/* ── Bento Grid ── */
+.bento {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:18px;
+}
+.card-social    { grid-column:1/3; grid-row:1; }
+.card-access    { grid-column:3/4; grid-row:1; }
+.card-poster    { grid-column:1/2; grid-row:2; }
+.card-arrival   { grid-column:2/3; grid-row:2; }
+.card-inventory { grid-column:3/4; grid-row:2; }
+
+/* ── 卡片基礎 ── */
+.card {
+  background:#fff;
+  border-radius:var(--radius);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+  border:1px solid rgba(0,0,0,.05);
+  box-shadow:var(--shadow);
+  transition:transform .26s cubic-bezier(.34,1.56,.64,1), box-shadow .26s ease;
+}
+.card:hover {
+  transform:translateY(-7px);
+  box-shadow:var(--shadow-hover);
+}
+
+/* ── 卡片頭部 ── */
+.card-head {
+  padding:28px 28px 22px;
+  display:flex; flex-direction:column; gap:16px;
+  position:relative; overflow:hidden;
+}
+.card-head::before {
+  content:''; position:absolute;
+  width:280px; height:280px; border-radius:50%;
+  background:rgba(255,255,255,.11);
+  right:-90px; bottom:-100px; pointer-events:none;
+}
+.card-head::after {
+  content:''; position:absolute;
+  width:120px; height:120px; border-radius:50%;
+  background:rgba(255,255,255,.07);
+  right:100px; bottom:-60px; pointer-events:none;
+}
+.card-head > * { position:relative; z-index:1; }
+
+.ch-social    { background:linear-gradient(140deg,#1d4ed8 0%,#3b82f6 55%,#60a5fa 100%); }
+.ch-access    { background:linear-gradient(140deg,#047857 0%,#10b981 55%,#34d399 100%); }
+.ch-poster    { background:linear-gradient(140deg,#be123c 0%,#f43f5e 55%,#fb7185 100%); }
+.ch-arrival   { background:linear-gradient(140deg,#b45309 0%,#f59e0b 55%,#fbbf24 100%); }
+.ch-inventory { background:linear-gradient(140deg,#5b21b6 0%,#8b5cf6 55%,#a78bfa 100%); }
+
+/* 圖示 + 標題橫排 */
+.ch-row { display:flex; align-items:center; gap:14px; }
+.card-icon {
+  font-size:26px; line-height:1;
+  width:54px; height:54px; border-radius:14px;
+  background:rgba(255,255,255,.22);
+  backdrop-filter:blur(10px);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  box-shadow:0 2px 10px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.card-cat {
+  font-size:10px; font-weight:700; letter-spacing:.17em;
+  text-transform:uppercase; color:rgba(255,255,255,.52); margin-bottom:4px;
+}
+.card-title {
+  font-size:22px; font-weight:900; letter-spacing:-.03em;
+  color:#fff; line-height:1.18;
+}
+.card-desc {
+  font-size:12.5px; color:rgba(255,255,255,.76); line-height:1.8;
+  border-top:1px solid rgba(255,255,255,.16); padding-top:14px;
+}
+
+/* ── 卡片主體 ── */
+.card-body { padding:18px 26px 4px; flex:1; }
+
+.feat-list { display:flex; flex-direction:column; }
+.feat {
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:13px; color:#475569; line-height:1.65;
+  padding:10px 0;
+  border-bottom:1px solid #f1f5f9;
+}
+.feat:last-child { border-bottom:none; }
+.feat-mark {
+  font-size:10.5px; font-weight:700; letter-spacing:.03em;
+  padding:2.5px 9px; border-radius:999px; white-space:nowrap;
+  flex-shrink:0; margin-top:2px;
+}
+.fm-social    { background:#dbeafe; color:#1e40af; }
+.fm-access    { background:#d1fae5; color:#065f46; }
+.fm-poster    { background:#ffe4e6; color:#9f1239; }
+.fm-arrival   { background:#fef3c7; color:#92400e; }
+.fm-inventory { background:#ede9fe; color:#4c1d95; }
+
+/* ── 卡片底部 ── */
+.card-foot {
+  padding:14px 26px 20px;
+  border-top:1px solid #f1f5f9;
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  margin-top:4px;
+}
+.btn {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:12.5px; font-weight:700; padding:9px 20px;
+  border-radius:999px; text-decoration:none;
+  letter-spacing:.02em; transition:all .18s ease;
+}
+.btn .arr { font-size:14px; transition:transform .18s ease; }
+.btn:hover .arr { transform:translateX(3px); }
+.btn:hover { filter:brightness(1.1); transform:scale(.975); }
+
+.btn-social    { background:var(--blue);   color:#fff; box-shadow:0 3px 10px rgba(37,99,235,.30); }
+.btn-access    { background:var(--green);  color:#fff; box-shadow:0 3px 10px rgba(5,150,105,.30); }
+.btn-poster    { background:var(--rose);   color:#fff; box-shadow:0 3px 10px rgba(225,29,72,.30); }
+.btn-arrival   { background:var(--amber);  color:#fff; box-shadow:0 3px 10px rgba(217,119,6,.30); }
+.btn-inventory { background:var(--purple); color:#fff; box-shadow:0 3px 10px rgba(124,58,237,.30); }
+
+.card-ver {
+  margin-left:auto; font-size:10px; color:#94a3b8; letter-spacing:.04em;
+  background:#f8fafc; border:1px solid #e2e8f0;
+  padding:3px 10px; border-radius:999px;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top:48px; padding-top:24px;
+  border-top:1px solid rgba(0,0,0,.06);
+  display:flex; justify-content:space-between; align-items:center;
+}
+.footer-l { font-size:11.5px; color:#94a3b8; }
+.footer-r { font-size:11px; color:#cbd5e1; }
+
+/* ── RWD ── */
+@media (max-width:780px) {
+  .bento { grid-template-columns:1fr; }
+  .card-social,.card-access,.card-poster,.card-arrival,.card-inventory {
+    grid-column:1; grid-row:auto;
+  }
+  .hero-title { font-size:46px; }
+  .topbar { padding:0 20px; }
+  .shell { padding:36px 16px 60px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="t-brand">
+    <div class="t-logo">&#63743;</div>
+    <div>
+      <div class="t-name">右昌 Apple Shop</div>
+      <div class="t-sub">Apple Authorized Reseller · 高雄楠梓德民路</div>
+    </div>
+  </div>
+  <div class="t-badge">工具總覽</div>
+</div>
+
+<div class="shell">
+
+  <div class="hero">
+    <div class="hero-eyebrow">Built with Claude</div>
+    <div class="hero-title">門市<em>五大</em><br>工具</div>
+    <div class="hero-sub">社群數據 · 配件陳列 · 會員海報 · 到貨提醒 · 庫存排程</div>
+  </div>
+
+  <div class="bento">
+
+    <!-- ── 社群儀表板 ── -->
+    <div class="card card-social">
+      <div class="card-head ch-social">
+        <div class="ch-row">
+          <div class="card-icon">📊</div>
+          <div>
+            <div class="card-cat">社群經營</div>
+            <div class="card-title">門市社群<br>數據儀表板</div>
+          </div>
+        </div>
+        <div class="card-desc">LINE@ 好友成長 × Google 商家表現，截圖上傳即自動更新，長期追蹤封鎖率與商家優異度。</div>
+      </div>
+      <div class="card-body">
+        <div class="feat-list">
+          <div class="feat">
+            <span class="feat-mark fm-social">LINE@</span>
+            好友 1,951 · 封鎖率 30.5% · 開封率最高 35.4%
+          </div>
+          <div class="feat">
+            <span class="feat-mark fm-social">Google</span>
+            搜尋曝光 39,215 · 來電 514 · 商家優異度 60%
+          </div>
+          <div class="feat">
+            <span class="feat-mark fm-social">目標</span>
+            封鎖率 &lt;25% · 優異度 &gt;80% · 週增好友 &gt;25
+          </div>
+        </div>
+      </div>
+      <div class="card-foot">
+        <a class="btn btn-social" href="https://snowsepch.github.io/store-social-dashboard/" target="_blank">🌐 開啟網頁版 <span class="arr">→</span></a>
+        <span class="card-ver">基準 2026/04/25</span>
+      </div>
+    </div>
+
+    <!-- ── 配件陳列 ── -->
+    <div class="card card-access">
+      <div class="card-head ch-access">
+        <div class="ch-row">
+          <div class="card-icon">🛒</div>
+          <div>
+            <div class="card-cat">配件管理</div>
+            <div class="card-title">配件陳列<br>建議</div>
+          </div>
+        </div>
+        <div class="card-desc">副廠配件 3 個月銷售 TOP 15 × 花車陳列位置建議。</div>
+      </div>
+      <div class="card-body">
+        <div class="feat-list">
+          <div class="feat">
+            <span class="feat-mark fm-access">冠軍</span>
+            STM iPad 觸控筆（qty 20）
+          </div>
+          <div class="feat">
+            <span class="feat-mark fm-access">亞軍</span>
+            LoopLoop 磁吸充電線（qty 19）
+          </div>
+          <div class="feat">
+            <span class="feat-mark fm-access">期間</span>
+            2026/01/24 – 04/24
+          </div>
+        </div>
+      </div>
+      <div class="card-foot">
+        <a class="btn btn-access" href="https://snowsepch.github.io/accessory-display/" target="_blank">🌐 開啟網頁版 <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <!-- ── 海報系統 ── -->
+    <div class="card card-poster">
+      <div class="card-head ch-poster">
+        <div class="ch-row">
+          <div class="card-icon">🖨️</div>
+          <div>
+            <div class="card-cat">換檔期工具</div>
+            <div class="card-title">會員優惠<br>海報系統</div>
+          </div>
+        </div>
+        <div class="card-desc">上傳操盤 PDF → 自動解析價格 → 產生 5 頁 A4 彩色海報 → 點字修改 → 一鍵列印</div>
+      </div>
+      <div class="card-body">
+        <div class="feat-list">
+          <div class="feat">
+            <span class="feat-mark fm-poster">5 頁</span>
+            iPhone · iPad · Mac · Watch · AirPods
+          </div>
+          <div class="feat">
+            <span class="feat-mark fm-poster">自動</span>
+            折扣金額從 PDF 計算，贈品手動維護
+          </div>
+          <div class="feat">
+            <span class="feat-mark fm-poster">可編輯</span>
+            點擊文字直接修改，底部欄即時套用
+          </div>
+        </div>
+      </div>
+      <div class="card-foot">
+        <a class="btn btn-poster" href="https://snowsepch.github.io/member-poster/" target="_blank">🌐 開啟網頁版 <span class="arr">→</span></a>
+        <span class="card-ver">v11c</span>
+      </div>
+    </div>
+
+    <!-- ── 到貨提醒 ── -->
+    <div class="card card-arrival">
+      <div class="card-head ch-arrival">
+        <div class="ch-row">
+          <div class="card-icon">📦</div>
+          <div>
+            <div class="card-cat">庫存管理</div>
+            <div class="card-title">到貨提醒<br>儀表板</div>
+          </div>
+        </div>
+        <div class="card-desc">上傳 Excel → Apple / 副廠 分頁顯示，狀態一覽，快速搜尋待通知訂單。</div>
+      </div>
+      <div class="card-body">
+        <div class="feat-list">
+          <div class="feat">
+            <span class="feat-mark fm-arrival">狀態</span>
+            緊急 / 一般 / 已通知 三色徽章
+          </div>
+          <div class="feat">
+            <span class="feat-mark fm-arrival">分頁</span>
+            Apple 正廠 ＋ 副廠配件 各自顯示
+          </div>
+          <div class="feat">
+            <span class="feat-mark fm-arrival">統計</span>
+            Apple 件 / 副廠 件 / 合計 即時摘要
+          </div>
+        </div>
+      </div>
+      <div class="card-foot">
+        <a class="btn btn-arrival" href="https://snowsepch.github.io/arrival-dashboard/" target="_blank">🌐 開啟網頁版 <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <!-- ── 配件庫存管理 ── -->
+    <div class="card card-inventory">
+      <div class="card-head ch-inventory">
+        <div class="ch-row">
+          <div class="card-icon">📋</div>
+          <div>
+            <div class="card-cat">補貨排程</div>
+            <div class="card-title">配件庫存<br>管理系統</div>
+          </div>
+        </div>
+        <div class="card-desc">上傳 Excel → 庫存水位分析 → 匯出 .ics 補貨提醒行事曆 + Excel 報表。</div>
+      </div>
+      <div class="card-body">
+        <div class="feat-list">
+          <div class="feat">
+            <span class="feat-mark fm-inventory">水位</span>
+            🔴緊急 &lt;14天 · 🟠建議 14–30天 · 🟢充足 &gt;60天
+          </div>
+          <div class="feat">
+            <span class="feat-mark fm-inventory">匯出</span>
+            .ics 行事曆提醒 ＋ Excel 庫存報表
+          </div>
+          <div class="feat">
+            <span class="feat-mark fm-inventory">搜尋</span>
+            依品名 / 水位篩選，快速定位缺貨品項
+          </div>
+        </div>
+      </div>
+      <div class="card-foot">
+        <a class="btn btn-inventory" href="https://snowsepch.github.io/inventory-system/" target="_blank">🌐 開啟網頁版 <span class="arr">→</span></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-l">高雄市楠梓區德民路 836 號 2F · 07-364-3207</div>
+    <div class="footer-r">Built with Claude · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
