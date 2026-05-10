@@ -30,9 +30,10 @@ body { font-family:'Noto Sans TC',-apple-system,'PingFang TC',sans-serif; min-he
 .bento{display:grid;grid-template-columns:1fr 1fr 1fr;border:2px solid var(--topbar);animation:fadeUp .5s .18s ease both;}
 .card-social{grid-column:1/3;grid-row:1;border-right:2px solid var(--topbar);border-bottom:2px solid var(--topbar);}
 .card-access{grid-column:3/4;grid-row:1;border-bottom:2px solid var(--topbar);}
-.card-poster{grid-column:1/2;grid-row:2;border-right:2px solid var(--topbar);}
-.card-arrival{grid-column:2/3;grid-row:2;border-right:2px solid var(--topbar);}
-.card-inventory{grid-column:3/4;grid-row:2;}
+.card-poster{grid-column:1/2;grid-row:2;border-right:2px solid var(--topbar);border-bottom:2px solid var(--topbar);}
+.card-arrival{grid-column:2/3;grid-row:2;border-right:2px solid var(--topbar);border-bottom:2px solid var(--topbar);}
+.card-inventory{grid-column:3/4;grid-row:2;border-bottom:2px solid var(--topbar);}
+.card-tracker{grid-column:1/4;grid-row:3;}
 .card{background:var(--page);display:flex;flex-direction:column;transition:background .15s;}
 .card:hover{background:var(--card-hover);}
 .card-head{padding:26px 30px 20px;display:flex;flex-direction:column;gap:12px;border-bottom:2px solid var(--topbar);background:var(--topbar);position:relative;overflow:hidden;}
@@ -91,7 +92,8 @@ body { font-family:'Noto Sans TC',-apple-system,'PingFang TC',sans-serif; min-he
   .card-access,
   .card-poster,
   .card-arrival,
-  .card-inventory {
+  .card-inventory,
+  .card-tracker {
     grid-column:1;
     grid-row:auto;
     border-right:none !important;
@@ -152,11 +154,11 @@ body { font-family:'Noto Sans TC',-apple-system,'PingFang TC',sans-serif; min-he
   <div class="hero">
     <div class="hero-left">
       <div class="hero-eyebrow">Built with Claude · 門市數位工具</div>
-      <div class="hero-title">五大<em>核心</em><br>工具</div>
-      <div class="hero-sub">社群數據 · 配件陳列 · 會員海報 · 到貨提醒 · 庫存排程</div>
+      <div class="hero-title">六大<em>核心</em><br>工具</div>
+      <div class="hero-sub">社群數據 · 配件陳列 · 會員海報 · 到貨提醒 · 庫存排程 · 專案追蹤</div>
     </div>
     <div class="hero-stamp">
-      <div class="stamp-num">5</div>
+      <div class="stamp-num">6</div>
       <div class="stamp-lbl">Tools</div>
     </div>
   </div>
@@ -316,6 +318,36 @@ body { font-family:'Noto Sans TC',-apple-system,'PingFang TC',sans-serif; min-he
       </div>
       <div class="card-foot">
         <a class="btn" href="https://snowsepch.github.io/inventory-system/" target="_blank">
+          開啟網頁版
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 配件專案成效追蹤 -->
+    <div class="card card-tracker">
+      <div class="card-head">
+        <div class="card-tag">追蹤</div>
+        <div class="ch-row">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <div class="card-cat">成效追蹤</div>
+            <div class="card-title">配件專案<br>成效追蹤</div>
+          </div>
+        </div>
+        <div class="card-desc">各配件專案推進進度與成效一覽，視覺化呈現執行狀態，快速掌握每項專案目標達成率。</div>
+      </div>
+      <div class="card-body">
+        <div class="feat-list">
+          <div class="feat"><span class="feat-mark">進度</span>各專案執行狀態即時呈現，一頁掌握全局</div>
+          <div class="feat"><span class="feat-mark">成效</span>目標達成率、里程碑追蹤，視覺化數據看板</div>
+          <div class="feat"><span class="feat-mark">管理</span>跨專案對比，快速定位需跟進項目</div>
+        </div>
+      </div>
+      <div class="card-foot">
+        <a class="btn" href="https://snowsepch.github.io/project-tracker/" target="_blank">
           開啟網頁版
           <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
