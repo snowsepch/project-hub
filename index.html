@@ -33,7 +33,8 @@ body { font-family:'Noto Sans TC',-apple-system,'PingFang TC',sans-serif; min-he
 .card-poster{grid-column:1/2;grid-row:2;border-right:2px solid var(--topbar);border-bottom:2px solid var(--topbar);}
 .card-arrival{grid-column:2/3;grid-row:2;border-right:2px solid var(--topbar);border-bottom:2px solid var(--topbar);}
 .card-inventory{grid-column:3/4;grid-row:2;border-bottom:2px solid var(--topbar);}
-.card-tracker{grid-column:1/4;grid-row:3;}
+.card-plano{grid-column:1/2;grid-row:3;border-right:2px solid var(--topbar);}
+.card-tracker{grid-column:2/4;grid-row:3;}
 .card{background:var(--page);display:flex;flex-direction:column;transition:background .15s;}
 .card:hover{background:var(--card-hover);}
 .card-head{padding:26px 30px 20px;display:flex;flex-direction:column;gap:12px;border-bottom:2px solid var(--topbar);background:var(--topbar);position:relative;overflow:hidden;}
@@ -93,6 +94,7 @@ body { font-family:'Noto Sans TC',-apple-system,'PingFang TC',sans-serif; min-he
   .card-poster,
   .card-arrival,
   .card-inventory,
+  .card-plano,
   .card-tracker {
     grid-column:1;
     grid-row:auto;
@@ -154,11 +156,11 @@ body { font-family:'Noto Sans TC',-apple-system,'PingFang TC',sans-serif; min-he
   <div class="hero">
     <div class="hero-left">
       <div class="hero-eyebrow">Built with Claude · 門市數位工具</div>
-      <div class="hero-title">六大<em>核心</em><br>工具</div>
-      <div class="hero-sub">社群數據 · 配件陳列 · 會員海報 · 到貨提醒 · 庫存排程 · 專案追蹤</div>
+      <div class="hero-title">七大<em>核心</em><br>工具</div>
+      <div class="hero-sub">社群數據 · 配件陳列 · 陳列分析 · 會員海報 · 到貨提醒 · 庫存排程 · 專案追蹤</div>
     </div>
     <div class="hero-stamp">
-      <div class="stamp-num">6</div>
+      <div class="stamp-num">7</div>
       <div class="stamp-lbl">Tools</div>
     </div>
   </div>
@@ -203,7 +205,7 @@ body { font-family:'Noto Sans TC',-apple-system,'PingFang TC',sans-serif; min-he
       </div>
     </div>
 
-    <!-- 配件陳列分析 Excel版 -->
+    <!-- 配件陳列 -->
     <div class="card card-access">
       <div class="card-head">
         <div class="card-tag">配件</div>
@@ -213,16 +215,16 @@ body { font-family:'Noto Sans TC',-apple-system,'PingFang TC',sans-serif; min-he
           </div>
           <div>
             <div class="card-cat">配件管理</div>
-            <div class="card-title">配件陳列<br>分析系統</div>
+            <div class="card-title">配件陳列<br>建議</div>
           </div>
         </div>
-        <div class="card-desc">上傳 POS Excel → 自動排名 TOP15 → 產生貨架示意圖 + 導購話術，支援多期比較。</div>
+        <div class="card-desc">副廠配件 3 個月銷售 TOP 15 × 花車陳列位置建議。</div>
       </div>
       <div class="card-body">
         <div class="feat-list">
-          <div class="feat"><span class="feat-mark">分析</span>自動識別欄位、過濾配件類別、銷售排名</div>
-          <div class="feat"><span class="feat-mark">示意圖</span>貨架四區自動分配，黃金視線區優先陳列</div>
-          <div class="feat"><span class="feat-mark">話術</span>依排行生成開場問句與導購引導框架</div>
+          <div class="feat"><span class="feat-mark">冠軍</span>STM iPad 觸控筆（qty 20）</div>
+          <div class="feat"><span class="feat-mark">亞軍</span>LoopLoop 磁吸充電線（qty 19）</div>
+          <div class="feat"><span class="feat-mark">期間</span>2026/01/24 – 04/24</div>
         </div>
       </div>
       <div class="card-foot">
@@ -230,7 +232,6 @@ body { font-family:'Noto Sans TC',-apple-system,'PingFang TC',sans-serif; min-he
           開啟網頁版
           <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
-        <span class="card-ver">Excel 上傳版</span>
       </div>
     </div>
 
@@ -322,6 +323,37 @@ body { font-family:'Noto Sans TC',-apple-system,'PingFang TC',sans-serif; min-he
           開啟網頁版
           <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
+      </div>
+    </div>
+
+    <!-- 配件陳列分析 Excel版 -->
+    <div class="card card-plano">
+      <div class="card-head">
+        <div class="card-tag">分析</div>
+        <div class="ch-row">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24"><polyline points="3 17 8 12 12 15 17 9 21 12"/><rect x="3" y="3" width="18" height="3" rx="1"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
+          </div>
+          <div>
+            <div class="card-cat">POS 分析</div>
+            <div class="card-title">配件陳列<br>分析系統</div>
+          </div>
+        </div>
+        <div class="card-desc">上傳 POS Excel → 自動排名 TOP 15 → 貨架示意圖 + 多期比較 + 導購話術框架。</div>
+      </div>
+      <div class="card-body">
+        <div class="feat-list">
+          <div class="feat"><span class="feat-mark">上傳</span>自動識別欄位、過濾保護貼殼、分類排名</div>
+          <div class="feat"><span class="feat-mark">示意圖</span>頂 / 黃金 / 中 / 底四區貨架自動分配</div>
+          <div class="feat"><span class="feat-mark">話術</span>依排行生成開場問句與導購引導框架</div>
+        </div>
+      </div>
+      <div class="card-foot">
+        <a class="btn" href="https://snowsepch.github.io/accessory-analysis/" target="_blank">
+          開啟網頁版
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <span class="card-ver">Excel 上傳版</span>
       </div>
     </div>
 
